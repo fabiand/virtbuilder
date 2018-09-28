@@ -15,6 +15,13 @@ persistentvolumeclaim/virtbuilder-cache created
 ```
 
 ## Populate PVC
+
+> **Note:** Only x86_64 images can be used with KubeVirt.
+
+Available templates can be listed by running (on your local machine) `docekr run -t --entrypoint virt-builder quay.io/fabiand/virtbuilder --list`.
+
+Choose one of the images (i.e. `fedora-28`).
+
 Then, create a target PVC and the job to fill it:
 
 ```bash
