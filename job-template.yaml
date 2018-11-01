@@ -27,8 +27,7 @@ objects:
         restartPolicy: OnFailure
         containers:
         - name: virtbuilder
-          image: quay.io/fabiand/virtbuilder
-          imagePullPolicy: IfNotPresent
+          image: quay.io/fabiand/virtbuilder:latest
           args:
           - ${OSNAME}
           - ${DISKSIZE}
