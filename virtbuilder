@@ -5,10 +5,13 @@ set -xe
 OSNAME=$1
 DISKSIZE=$2
 
-[[ -n "$DISKSIZE" ]] && SIZEARG="--size $DISKSIZE" || :
+declare -a MOREARGS=()
+
+[[ -n "$DISKSIZE" ]] && MOREARGS+=("--size $DISKSIZE" || :)
+[[ -d "$INSTALL" ]] && MOREARGS+=("--install $INSTALL" || :)
 
 export LIBGUESTFS_BACKEND=direct
-virt-builder --format raw -o /pvc/disk.img $SIZEARG $OSNAME
+virt-builder --format raw -o /pvc/disk.img ${MOREARGS[*]} $OSNAME
 
 # 107:107 is qemu as an owner
 chown 107:107 /pvc/disk.img
