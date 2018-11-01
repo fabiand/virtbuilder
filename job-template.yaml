@@ -32,6 +32,9 @@ objects:
           args:
           - ${OSNAME}
           - ${DISKSIZE}
+          env:
+          - name: INSTALL
+            value: cloud-init
           volumeMounts:
           - mountPath: "/pvc"
             name: target
