@@ -7,8 +7,8 @@ DISKSIZE=$2
 
 declare -a MOREARGS=()
 
-[[ -n "$DISKSIZE" ]] && MOREARGS+=("--size $DISKSIZE" || :)
-[[ -d "$INSTALL" ]] && MOREARGS+=("--install $INSTALL" || :)
+[[ -n "$DISKSIZE" ]] && MOREARGS+=("--size $DISKSIZE") || :
+[[ -d "$INSTALL" ]] && MOREARGS+=("--install $INSTALL") || :
 
 export LIBGUESTFS_BACKEND=direct
 virt-builder --format raw -o /pvc/disk.img ${MOREARGS[*]} $OSNAME
