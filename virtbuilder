@@ -9,7 +9,7 @@ declare -a MOREARGS=()
 
 [[ -n "$DISKSIZE" ]] && MOREARGS+=("--size $DISKSIZE") || :
 [[ -n "$INSTALL" ]] && MOREARGS+=("--install $INSTALL") || :
-[[ -n "$RUN_COMMAND" ]] && MOREARGS+=("--run-command '$RUN_COMMAND'") || :
+[[ -n "$RUN_COMMAND" ]] && { cat > run.sh <<<$RUN_COMMAND && MOREARGS+=("--run run.sh") ; } || :
 
 export LIBGUESTFS_BACKEND=direct
 virt-builder --format raw -o /pvc/disk.img ${MOREARGS[*]} $OSNAME
