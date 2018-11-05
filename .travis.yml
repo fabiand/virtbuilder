@@ -16,7 +16,7 @@ jobs:
       name: "minikube (1.11)"
       env: CPLATFORM=minikube CDIST=kubernetes CVER=1.11.3
 
-      name: "minikube (1.11) with quay.io/fabiand/virtbuilder image"
+    - name: "minikube (1.11) with quay.io/fabiand/virtbuilder image"
       env: CPLATFORM=minikube CDIST=kubernetes CVER=1.11.3 USE_QUAY=true
 
 services:
